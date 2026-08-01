@@ -1,0 +1,75 @@
+.brandGrid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+.swatches {
+  display: flex;
+  gap: 10px;
+}
+.swatchOpt {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.swatchOpt.selected {
+  border-color: var(--color-text);
+}
+.readonlyNote {
+  font-size: 11.5px;
+  color: color-mix(in srgb, var(--color-text) 50%, transparent);
+  margin-top: 5px;
+}
+.moduleList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.moduleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.moduleRow + .moduleRow {
+  border-top: 1px solid var(--color-divider);
+}
+.moduleRow .mName {
+  font-size: 13.5px;
+  font-weight: 500;
+}
+.moduleRow .mSub {
+  font-size: 11.5px;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+  margin-top: 2px;
+}
+.moduleRow .mRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.moduleRow .mState {
+  font-size: 11.5px;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+  width: 78px;
+  text-align: right;
+}
+.previewNav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  border: 1px solid var(--color-divider);
+}
+.previewNav .previewName {
+  font-family: var(--font-heading);
+  font-size: 13px;
+}
