@@ -1,13 +1,6 @@
+import Link from "next/link";
 import { players } from "@/lib/mock-data";
-
-const STATUS_TAG: Record<
-  (typeof players)[number]["status"],
-  { label: string; className: string }
-> = {
-  fit: { label: "Fit", className: "tag-accent" },
-  belast: { label: "Belast", className: "tag-outline" },
-  geblesseerd: { label: "Geblesseerd", className: "tag-neutral" },
-};
+import { PLAYER_STATUS_LABEL } from "@/lib/labels";
 
 export default function PlayersPage() {
   return (
@@ -32,12 +25,14 @@ export default function PlayersPage() {
             <tbody>
               {players.map((p) => (
                 <tr key={p.id}>
-                  <td>{p.name}</td>
+                  <td>
+                    <Link href={`/players/${p.id}`}>{p.name}</Link>
+                  </td>
                   <td>{p.position}</td>
                   <td>{p.age}</td>
                   <td>
-                    <span className={`tag ${STATUS_TAG[p.status].className}`}>
-                      {STATUS_TAG[p.status].label}
+                    <span className={`tag ${PLAYER_STATUS_LABEL[p.status].className}`}>
+                      {PLAYER_STATUS_LABEL[p.status].label}
                     </span>
                   </td>
                   <td>{p.acwr.toFixed(2)}</td>

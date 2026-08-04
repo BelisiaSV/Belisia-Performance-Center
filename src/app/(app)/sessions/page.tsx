@@ -1,11 +1,6 @@
+import Link from "next/link";
 import { sessions } from "@/lib/mock-data";
-
-const TYPE_LABEL: Record<(typeof sessions)[number]["type"], string> = {
-  veld: "Veldtraining",
-  kracht: "Kracht",
-  wedstrijd: "Wedstrijd",
-  hersteld: "Herstel",
-};
+import { SESSION_TYPE_LABEL } from "@/lib/labels";
 
 export default function SessionsPage() {
   const gemiddeldeLoad = Math.round(
@@ -56,9 +51,11 @@ export default function SessionsPage() {
             <tbody>
               {sessions.map((s) => (
                 <tr key={s.id}>
-                  <td>{s.title}</td>
                   <td>
-                    <span className="tag tag-neutral">{TYPE_LABEL[s.type]}</span>
+                    <Link href={`/sessions/${s.id}`}>{s.title}</Link>
+                  </td>
+                  <td>
+                    <span className="tag tag-neutral">{SESSION_TYPE_LABEL[s.type]}</span>
                   </td>
                   <td>{s.date}</td>
                   <td>{s.load}</td>
