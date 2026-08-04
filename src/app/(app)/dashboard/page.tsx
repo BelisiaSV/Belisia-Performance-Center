@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { players, sessions, videos } from "@/lib/mock-data";
+import { SESSION_TYPE_LABEL } from "@/lib/labels";
 
 export default function DashboardPage() {
   const belast = players.filter((p) => p.status !== "fit").length;
@@ -60,9 +61,11 @@ export default function DashboardPage() {
             <tbody>
               {sessions.map((s) => (
                 <tr key={s.id}>
-                  <td>{s.title}</td>
                   <td>
-                    <span className="tag tag-neutral">{s.type}</span>
+                    <Link href={`/sessions/${s.id}`}>{s.title}</Link>
+                  </td>
+                  <td>
+                    <span className="tag tag-neutral">{SESSION_TYPE_LABEL[s.type]}</span>
                   </td>
                   <td>{s.date}</td>
                   <td>{s.load}</td>
@@ -92,7 +95,9 @@ export default function DashboardPage() {
             <tbody>
               {videos.slice(0, 3).map((v) => (
                 <tr key={v.id}>
-                  <td>{v.title}</td>
+                  <td>
+                    <Link href={`/videos/${v.id}`}>{v.title}</Link>
+                  </td>
                   <td>{v.session}</td>
                   <td>{v.date}</td>
                   <td>{v.duration}</td>

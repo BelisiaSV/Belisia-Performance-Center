@@ -1,10 +1,6 @@
+import Link from "next/link";
 import { videos } from "@/lib/mock-data";
-
-const TAG_LABEL: Record<(typeof videos)[number]["tag"], string> = {
-  training: "Training",
-  wedstrijd: "Wedstrijd",
-  analyse: "Analyse",
-};
+import { VIDEO_TAG_LABEL } from "@/lib/labels";
 
 export default function VideosPage() {
   return (
@@ -44,10 +40,12 @@ export default function VideosPage() {
             <tbody>
               {videos.map((v) => (
                 <tr key={v.id}>
-                  <td>{v.title}</td>
+                  <td>
+                    <Link href={`/videos/${v.id}`}>{v.title}</Link>
+                  </td>
                   <td>{v.session}</td>
                   <td>
-                    <span className="tag tag-accent">{TAG_LABEL[v.tag]}</span>
+                    <span className="tag tag-accent">{VIDEO_TAG_LABEL[v.tag]}</span>
                   </td>
                   <td>{v.date}</td>
                   <td>{v.duration}</td>
